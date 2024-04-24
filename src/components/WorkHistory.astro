@@ -1,0 +1,68 @@
+---
+import { useState } from "astro/runtime";
+interface Props {
+  title: string;
+  companyName: string;
+  companyUrl: string;
+  description: string;
+  tasks: object;
+  skills: object;
+  workTime: string;
+  companyImage: string;
+}
+
+const {
+  title,
+  companyName,
+  companyUrl,
+  description,
+  skills,
+  workTime,
+  tasks,
+  companyImage,
+} = Astro.props;
+---
+
+<div class="py-4 font-title">
+  <div class="flex flex-column justify-between">
+    <div class="flex-shrink mr-4">{title}</div>
+    <div
+      class="text-justify text-[0.75rem] lg:text-[0.9rem] flex justify-center items-center"
+    >
+      {workTime}
+    </div>
+  </div>
+  <div class="flex-grow"></div>
+  <div class="flex flex-column items-center">
+    <img class="w-5 h-5 rounded-full mr-2" src={companyImage} />
+    <a
+      href={companyUrl}
+      target="blank_"
+      class="flex-shrink company-name lg:text-[1.05rem]"><u>{companyName}</u></a
+    >
+  </div>
+</div>
+
+<p class="pt-3 text-justify items-right text-[0.65rem] lg:text-[0.9rem]">
+  {description}
+</p>
+<div>
+  <ul
+    class="list-disc pt-3 text-justify items-right text-[0.65rem] lg:text-[0.9rem]"
+  >
+    {tasks.map((task) => <li>{task}</li>)}
+  </ul>
+</div>
+
+<p class="pt-4 text-[0.6rem] lg:text-[0.8rem]">skill sets:</p>
+<div>
+  <div class="flex flex-wrap gap-2 pt-2">
+    {
+      skills.map((skill) => (
+        <p class="text-[0.5rem] lg:text-[0.7rem] border-solid border border-gray-600 px-2">
+          {skill}
+        </p>
+      ))
+    }
+  </div>
+</div>

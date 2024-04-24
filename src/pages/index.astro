@@ -1,50 +1,153 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import WorkHistory from "../components/WorkHistory.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { deserializeManifest } from "astro/app";
+
+const workHistory = [
+  {
+    title: "Senior Software Engineer",
+    companyName: "Delman Data Teknologi",
+    description:
+      "One of the earliest data solution companies in Indonesia specializes in data preparation, transformation, and managing custom data projects for clients.",
+    skills: [
+      "Representational State Transfer (REST)",
+      "Python",
+      "Object-Oriented Programming (OOP)",
+      "Demand Planning",
+      "Unit Testing",
+      "JavaScript",
+      "Software Development",
+      "React.js",
+      "Flask",
+      "Docker",
+      "Airflow",
+      "Mysql",
+      "Postgresql",
+      "Front-End Development",
+      "Back-End Web Development",
+    ],
+    tasks: [
+      "Engineered a B2B analytics platform for customer behavior that provides almost real time data , utilizing Docker, FastAPI, React.js, and Android",
+      "Creating a data orchestrator to analyze customer behavior from multiple data source such as hadoop and postgres using Airflow, sklearn and xgboost to help increasing sales productivity by 4x",
+      "Contributed to cleaning data, ingesting hundreds of gigabytes of data from multiple sources such as Cosmos DB, SQL Server, ADLS, etc. Also, translated existing code from Spark to Pandas and PostgreSQl",
+      "Cleaning customer data to be ready for use in the CDP system using Pandas and Delman Data Lab as data orchestration tools",
+      "Created a Hospital Information System utilizing Flask, React, Docker, and PostgreSQL that used Kubernetes to deploy and used by multiple hospitals and used by more than 30 users everyday.",
+      "Contributed to technical planning, sprint prioritization, and task allocation to synergize 3 to 5 engineers, ensuring efficient project execution.",
+      "Developing a dynamic analytical dashboard platform that provides real-time data, deployed and utilized by over 20 divisions",
+    ],
+    workTime: "Nov 2018 - current",
+    companyUrl: "https://delman.io",
+    companyImage:
+      "https://media.licdn.com/dms/image/C4E0BAQEuwERmD2rYoQ/company-logo_100_100/0/1644895762868/delman_io_logo?e=1721865600&v=beta&t=2CXd9eQt4Ml7osf9UnVcFjpQIjgadXOJ111yFA2bqWk",
+  },
+  {
+    title: "Backend engineering mentor",
+    companyName: "Startup Campus",
+    description:
+      "A fully accredited education institution providing in-demand Digital and ESG competencies complemented with real projects, certification, and job connectors. ",
+    skills: [
+      "Representational State Transfer (REST)",
+      "Python",
+      "Object-Oriented Programming (OOP)",
+      "JavaScript",
+      "Teaching",
+      "Software Development",
+      "Flask",
+      "Back-End Web Development",
+      "Mentoring",
+      "Docker",
+    ],
+    tasks: [
+      "Mentor a cohort of 15 individuals, emphasizing proficiency in backend development using Python and Flask.",
+      "Deliver guidance on fundamental DevOps methodologies, introducing students to Docker and the Google Cloud Platform.",
+      "Cultivate a comprehensive learning environment that integrates these technologies, fostering adeptness in contemporary software development and deployment practices.",
+      "Demonstrate capacity to mentor others in technical domains, facilitating knowledge transfer and skill development in software engineering.",
+    ],
+    workTime: "May 2022 - Dec 2022",
+    companyUrl: "https://startupcampus.id",
+    companyImage:
+      "https://media.licdn.com/dms/image/C560BAQET9ukDoadfYQ/company-logo_100_100/0/1647888813644/startupcampusid_logo?e=1721865600&v=beta&t=13D95w2ctOdgGhSIkpUZzv1hoosSC3Am_3o5TzDiAT4",
+  },
+  {
+    title: "Software Engineer",
+    companyName: "Kibar",
+    description:
+      "A tech startup ecosystem builder in Indonesia that distribute opportunities in the digital era by partnering with industry stakeholders, running programs to nurture startups, and establishing hubs for creators, innovators, and entrepreneurs to collaborate",
+    skills: [
+      "Representational State Transfer (REST)",
+      "Python",
+      "Object-Oriented Programming (OOP)",
+      "JavaScript",
+      "Software Development",
+      "Flask",
+      "Back-End Web Development",
+      "Docker",
+    ],
+    tasks: [
+      "Implemented a Single Sign-On system using Django for backend, Docker for containerization, and React.js for frontend.",
+      "Utilized Python and Django for robust Back-End Development.",
+      "Played a key role in designing and developing an HR system to streamline organizational processes.",
+      "Contributed significantly to the development of the Creative Ecosystem platform (kreavi.com), employing Flask for backend development, React for frontend, and Docker for efficient deployment.",
+      "Demonstrated strong technical proficiency and cross-functional expertise in delivering comprehensive solutions to meet diverse organizational needs.",
+    ],
+    workTime: "Oct 2017 - Oct 2018",
+    companyUrl: "https://www.linkedin.com/company/kibar-kreasi-indonesia/",
+    companyImage:
+      "https://media.licdn.com/dms/image/C560BAQGFKFSaqOF5kA/company-logo_100_100/0/1631365620315?e=1721865600&v=beta&t=ETj7YxwgaaX1hkuEB-ehSZKgqQqtt0bbsR3I35ZEuDA",
+  },
+];
 ---
 
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="flex flex-column items-center">
+        <h1>Hello There !</h1>
+        <img
+          class="ml-4 w-30 h-11"
+          src="https://static1.srcdn.com/wordpress/wp-content/uploads/2022/03/Obi-Wan-Kenobi-Hello-There.jpg"
+        />
+      </div>
+      <p>
+        I'm Raihan Parlaungan, currently flexing my coding muscles at <a
+          href="delman.io">delman.io</a
+        > As a Senior Software Engineer, I'm all about solving complex problems and
+        coding. I'm language, framework, and tool agnostic, but for now, I'm mainly
+        using Python and JavaScript.
+      </p>
+      <p>
+        i'm also have certified as <a
+          href="https://www.credential.net/46b0ac88-08ec-4c75-8fd7-ee710a790bd5?key=4efaf873c4bd26efae98c7b954065ca9528043b143657a0c7b57c0be95343076"
+          >Associate android developer
+        </a> and <a
+          href="https://www.credential.net/18cefe1e-9ac9-4ff5-92ca-98e12790e073?key=ef3f134e8f40edd6da79d3f560b7c16c06c12cfe8e7eb7f0d6d5fc98678e2795"
+          >GCP Associate Cloud Engineer
+        </a>
+      </p>
+      <p class="mt-10">My Experience Playlist:</p>
+      {
+        workHistory.map((work) => (
+          <WorkHistory
+            title={work.title}
+            companyName={work.companyName}
+            companyUrl={work.companyUrl}
+            description={work.description}
+            skills={work.skills}
+            workTime={work.workTime}
+            tasks={work.tasks}
+            companyImage={work.companyImage}
+          />
+        ))
+      }
+
+      <Footer />
+    </main>
+  </body>
 </html>
